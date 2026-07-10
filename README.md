@@ -1,8 +1,8 @@
 # Genyus Academy — Landing (Curso 26-27)
 
-Landing page de captación para **Genyus Academy** y **Genyus Lab**, con el cuadrante de horarios de la **Opción A** (escenario de lanzamiento) y un formulario de inscripción integrado.
+Landing page de captación para **Genyus Academy** y **Genyus Lab**, con el cuadrante de horarios de la **Opción A** (escenario de lanzamiento) y dos formularios de inscripción (Fillout) integrados.
 
-Construida sobre el **Genyus School Design System** (colores, tipografías Helotypo / Nobel Uno / Anton, gradientes de marca) y pensada para integrarse en un sitio mayor.
+Construida sobre el **Genyus School Design System** (colores, tipografías Helotypo / Nobel Uno / Anton, gradientes de marca) y pensada para integrarse en un sitio mayor — **sin header ni footer propios** y con un margen superior para el header del sitio anfitrión.
 
 ---
 
@@ -23,52 +23,53 @@ El archivo **`index.html` es autocontenido**: incluye todo (estilos, tipografía
 ## 🧭 Estructura de la página
 
 1. **Hero** — propuesta de valor y CTA principal.
-2. **Nuestro método** — tres pilares (mentalidad emprendedora, habilidades para la vida, comunicar ideas).
-3. **Academy y Lab** — los dos itinerarios (extraescolar semanal vs. mentorías quincenales premium).
-4. **Metodología** — clases en directo de 90 min, grupos reducidos, progresión por curso.
-5. **Grupos G1–G6** — un grupo por etapa, de 5.º Primaria a 4.º ESO.
-6. **Horario · Opción A** — Academy (3 grupos) + Lab (2 grupos quincenales alternos).
-7. **Por qué desde 5.º Primaria** — criterio pedagógico de edad mínima.
-8. **Ecosistema** — South Summit, Startup OLÉ, Future Minds Fest.
-9. **Inscripción** — conmutador de dos pestañas:
-   - **Más info** → formulario embebido de Fillout.
-   - **Reservar plaza** → formulario propio con lógica condicional y validación.
+2. **Barra de premio** — "Premio Mejor Proyecto de Educación de España 2025".
+3. **Nuestro método** — tres pilares (mentalidad emprendedora, habilidades para la vida, comunicar ideas).
+4. **Academy y Lab** — los dos itinerarios, cada uno con su **precio** (80 €/mes y 100 €/mes) y CTA.
+5. **Metodología** — clases en directo de 90 min, grupos reducidos, progresión por curso.
+6. **Grupos** — un grupo por etapa, de 5.º EP a 4.º ESO.
+7. **Horario · Opción A** — Academy (3 grupos) + Lab (2 grupos quincenales alternos).
+8. **Por qué desde 5.º Primaria** — criterio pedagógico (9-10 años).
+9. **Ecosistema** — South Summit, Startup OLÉ, Future Minds Fest, con foto real de cada evento.
+10. **Inscripción** — conmutador de dos pestañas (**Reservar plaza** es la vista por defecto):
+    - **Reservar plaza** → formulario embebido de Fillout (id `vSuEqLXPYWus`).
+    - **Más info** → formulario embebido de Fillout (id `wYMXyRAywkus`).
+
+Totalmente responsive: breakpoints de tablet (≤1024px / ≤860px) y móvil (≤640px) ajustan grids, tamaños de texto y paddings.
 
 ---
 
-## 📝 Formulario "Reservar plaza"
+## 📝 Formularios de inscripción
 
-Formulario en 5 bloques según el dossier pedagógico:
+Ambas pestañas usan formularios **Fillout** embebidos (`data-fillout-id`, con `data-fillout-dynamic-resize` para que se ajusten a su alto real sin scroll interno):
 
-1. Datos del alumno/a (nombre, fecha de nacimiento → calcula edad, curso, colegio, localidad, provincia).
-2. Datos del tutor legal (nombre, teléfono, email, facturación).
-3. Programa + **horario asignado automáticamente** según curso/programa + casilla de conformidad.
-4. **Candidatura a Genyus Lab** (bloque condicional: solo aparece al elegir Lab).
-5. Autorizaciones (autonomía digital + protección del menor).
+- **Reservar plaza** → `vSuEqLXPYWus`
+- **Más info** → `wYMXyRAywkus`
 
-Incluye validación de campos y el límite de edad 13–17 para Lab.
+### ⚠️ Conectar los envíos a Slack
 
-### ⚠️ Conectar los envíos
+No requiere código: desde el panel de cada formulario en Fillout → **Integrate → Slack** → conecta tu workspace, elige el canal y mapea los campos. También puedes usar Zapier/Make o un webhook si necesitas lógica adicional.
 
-- **Fillout ("Más info"):** conéctalo a Slack desde el propio panel de Fillout (Integrate → Slack) o vía Zapier/Make/webhook. No requiere código.
-- **Formulario propio ("Reservar plaza"):** actualmente valida y muestra un mensaje de éxito, **pero no envía los datos a ningún servidor**. Para recibir los envíos (email, Slack, base de datos…) hay que conectar el `handleSubmit` a un backend o webhook. Alternativa sin código: usar el embed de Fillout para ambas pestañas.
+Para cambiar de formulario, sustituye el valor de `data-fillout-id` por el id de tu nuevo formulario en Fillout.
 
 ---
 
 ## 🎨 Personalización
 
-- **Fotografías:** son imágenes de stock (Unsplash) como *placeholder*. Sustitúyelas por fotos reales de Genyus.
-- **ID de Fillout:** cámbialo en el `data-fillout-id` si usas otro formulario.
-- **Textos, colores y horarios:** editables en el archivo fuente `Landing Genyus Academy.dc.html` (versión de trabajo) antes de re-empaquetar.
+- **Fotografías:** ya son fotos reales de Genyus (alumnos en clase, sesión en Google Meet, y las 3 fotos de eventos). Puedes sustituirlas por otras en `assets/hero/` y `assets/events/` manteniendo el mismo nombre de archivo, o editando la ruta en el HTML.
+- **ID de Fillout:** cámbialo en el atributo `data-fillout-id` de cada panel si usas otro formulario.
+- **Textos, colores, precios y horarios:** editables directamente en `index.html` (busca la sección correspondiente por su comentario `<!-- ===== -->`).
 
 ---
 
 ## 📂 Contenido del repositorio
 
 ```
-index.html      → Landing autocontenida (lista para publicar)
-README.md       → Este archivo
-assets/logos/   → Logotipos de marca (SVG) para referencia
+index.html          → Landing autocontenida (lista para publicar)
+README.md           → Este archivo
+assets/logos/       → Logotipos de marca (SVG) para referencia
+assets/hero/        → Fotos del hero y de la sección de metodología
+assets/events/       → Fotos de South Summit, Startup OLÉ y Future Minds Fest
 ```
 
 ---
