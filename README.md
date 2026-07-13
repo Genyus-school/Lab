@@ -65,11 +65,11 @@ Para cambiar de formulario, sustituye el valor de `data-fillout-id` por el id de
 ## 📂 Contenido del repositorio
 
 ```
-index.html          → Landing autocontenida (lista para publicar)
+index.html          → Landing autocontenida (lista para publicar / Framer)
 README.md           → Este archivo
 assets/logos/       → Logotipos de marca (SVG) para referencia
-assets/hero/        → Fotos del hero y de la sección de metodología
-assets/events/       → Fotos de South Summit, Startup OLÉ y Future Minds Fest
+assets/hero/        → Fotos del hero y de la sección de metodología (comprimidas)
+assets/events/      → Fotos de South Summit, Startup OLÉ y Future Minds Fest (comprimidas)
 ```
 
 ---
